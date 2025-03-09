@@ -1,3 +1,21 @@
+const socialLinks: { [key: string]: string }[] = [
+  {
+    name: 'Github',
+    url: 'https://github.com/zhoang2k2',
+    icon: 'github.svg',
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/hoangnv02/',
+    icon: 'linkedin.svg',
+  },
+  {
+    name: 'CV',
+    url: 'https://www.canva.com/design/DAGEFom9ehY/wVMSz1fWz718V27TSDYE8Q/view',
+    icon: 'cv.svg',
+  },
+]
+
 const skillsDetail: {
   [key: string]: { image: string; color: string; label: string }
 } = {
@@ -98,4 +116,4 @@ const renderSkills: string[] = [
   'git',
 ]
 
-export { skillsDetail, renderSkills }
+export { skillsDetail, renderSkills, socialLinks }
