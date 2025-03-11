@@ -1,8 +1,15 @@
 'use client'
 
-import { renderSkills, skillsDetail, socialLinks } from '@/constants/data'
+import ImageProject from '@/components/image/ImageProject'
+import {
+  projectDetail,
+  renderProjects,
+  renderSkills,
+  skillsDetail,
+  socialLinks,
+} from '@/constants/data'
 import { hexToRGBA } from '@/utils/common'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 const PortfolioPage = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
@@ -13,21 +20,21 @@ const PortfolioPage = () => {
       <section className="grid grid-cols-12">
         <div className="col-span-8 flex flex-col gap-8">
           <h1>
-            Hello, I'm <span>Hoang Nguyen</span>.
+            I'm <span>Hoang Nguyen</span>.
             <br />
             <span>Frontend</span> <span className="hollow-text">Developer</span>
             <br />
             based in <span>Da Nang</span>.
           </h1>
 
-          <p className="text-xl">
+          <p className="text-lg">
             I have <span>8+ months of experience</span>, along with{' '}
             <span>2+ months of freelancing</span>. <br /> During my time working on various projects
             at my previous company, I developed skills in <br /> SEO & Performance optimization,
             Customer communication, and Project management.
           </p>
 
-          <ul className="bg-black pl-4 pr-12 ml-6 z-1 w-fit flex gap-4 mt-16">
+          <ul className="pl-4 pr-12 ml-6 z-1 w-fit flex gap-4 mt-16">
             {socialLinks.map((social, index) => {
               return (
                 <li
@@ -44,7 +51,6 @@ const PortfolioPage = () => {
         </div>
 
         <div className="relative col-span-4">
-          this is image
           <div className="border-absolute"></div>
         </div>
       </section>
@@ -93,7 +99,58 @@ const PortfolioPage = () => {
           })}
         </ul>
       </section>
-      <section>3</section>
+
+      {/*============================================ PROJECTS SECTION ============================================*/}
+      <section>
+        <h2>
+          My <span>Projects</span> I have worked on
+        </h2>
+        <div className="flex flex-col gap-16">
+          {renderProjects.map((project, index) => {
+            const data = projectDetail[project]
+            const technologies = data.techStack as string[]
+            const responsibilities = data.responsibility as string[]
+            return (
+              <div
+                key={index}
+                className="grid grid-cols-12 items-center gap-8"
+                style={{ rowGap: '16px' }}
+              >
+                <div className="col-span-6 blur-card w-full p-6 rounded-md">
+                  <h3 className="text-xl mb-4">
+                    <span className='italic'>{data.time}</span>
+                    <span className="mx-10">|</span>
+                    <span>{data.name}</span>
+                  </h3>
+
+                  <ul className="project-detail-list flex flex-col gap-2">
+                    <li>
+                      <span className="font-semibold">Description:</span>
+                      <span>{data.description}</span>
+                    </li>
+                    <li>
+                      <span className="font-semibold">Technology:</span>
+                      <span>{technologies.join(', ')}</span>
+                    </li>
+                    <li>
+                      <span className="font-semibold">Project Size:</span>
+                      <span>{data.projectSize}</span>
+                    </li>
+                    <li>
+                      <span className="font-semibold">Responsibility:</span>
+                      <span>{responsibilities.join(', ')}</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="col-span-6">
+                  <ImageProject projectName={project} />
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </section>
     </div>
   )
 }

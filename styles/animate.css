@@ -1,0 +1,35 @@
+.animate-next-btn {
+    animation: movingNextBtn 1.5s ease-in-out 1s infinite
+}
+
+.animate-prev-btn {
+    animation: movingPrevBtn 1.5s ease-in-out 1s infinite
+}
+
+@keyframes movingNextBtn {
+    0% {
+        transform: translateX(-20px)
+    }
+
+    50% {
+        transform: translateX(-15px)
+    }
+
+    100% {
+        transform: translateX(-20px)
+    }
+}
+
+@keyframes movingPrevBtn {
+    0% {
+        transform: translateX(20px)
+    }
+
+    50% {
+        transform: translateX(15px)
+    }
+
+    100% {
+        transform: translateX(20px)
+    }
+}

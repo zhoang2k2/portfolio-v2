@@ -1,8 +1,8 @@
-@import 'tailwindcss';
+@use 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #030f12;
+  --foreground: #f9fafb;
 }
 
 @theme inline {
@@ -12,12 +12,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     --background: #0a0a0a;
+//     --foreground: #ededed;
+//   }
+// }
 
 body {
   background: var(--background);
@@ -59,6 +59,11 @@ section {
   }
 }
 
+.blur-card {
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
+}
+
 .border-absolute {
   position: absolute;
   right: 0;
@@ -73,4 +78,11 @@ section {
   font-weight: bold;
   color: transparent;
   -webkit-text-stroke: 0.75px white;
+}
+
+.project-detail-list {
+  li {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+  }
 }
